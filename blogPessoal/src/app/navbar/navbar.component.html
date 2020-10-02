@@ -24,8 +24,28 @@
                 </li>
 
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link text-monospace texto text-uppercase font-weight-bold r" routerLink='/feed'>Feed</a>
+                    <a class="nav-link text-monospace texto text-uppercase font-weight-bold " routerLink='/feed'>Feed</a>
                 </li>
+
+                <div * ngIf='auth.btnLogin()'>
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link text-monospace texto text-uppercase font-weight-bold " routerLink='/login'>Login</a>
+                    </li>
+                </div>
+
+                <div *ngIf='auth.btnLogin()'>
+                    <li class="nav-item">
+                      <a class="nav-link texto text-monospace text-uppercase font-weight-bold p-3" routerLink='/cadastro'>Cadastro</a>
+                    </li>
+                  </div>
+
+            
+                  <div *ngIf='auth.btnSair()'>
+                    <li class="nav-item">
+                      <a class="nav-link texto text-monospace text-uppercase font-weight-bold p-3" (click)='sair()'>Sair</a>
+                    </li>
+                  </div>
+
             
 
 
