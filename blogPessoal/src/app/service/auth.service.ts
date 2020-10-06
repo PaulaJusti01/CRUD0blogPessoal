@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../model/User';
+import { Usuario } from '../model/Usuario';
 import { UserLogin } from '../model/UserLogin';
 
 @Injectable({
@@ -14,8 +14,8 @@ export class AuthService {
     return this.http.post('http://localhost:9000/usuarios/logar', userLogin)
   }
 
-  cadastrar(user: User) {
-    return this.http.post('http://localhost:9000/usuarios/cadastrar', user)
+  cadastrar(usuario: Usuario) {
+    return this.http.post('http://localhost:9000/usuarios/cadastrar', usuario)
   }
 
   btnSair (){
@@ -37,3 +37,4 @@ export class AuthService {
   }
 
  
+}

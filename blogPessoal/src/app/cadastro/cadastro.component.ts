@@ -1,9 +1,8 @@
-import { AlertasService} from './../service/alertas.service';
+import { AlertasService } from './../service/alertas.service';
 import { AuthService } from './../service/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { User } from '../model/User';
+import { Usuario } from '../model/Usuario';
 import { Router } from '@angular/router';
-import { from } from 'rxjs';
 
 @Component({
   selector: 'app-cadastro',
@@ -12,7 +11,7 @@ import { from } from 'rxjs';
 })
 export class CadastroComponent implements OnInit {
 
-  user: User = new User()
+  user: Usuario = new Usuario()
   senha: string
 
   constructor(
@@ -28,9 +27,10 @@ export class CadastroComponent implements OnInit {
     this.senha = event.target.value
   }
 
+
   cadastrar() {
     if( this.senha === this.user.senha){
-      this.authService.cadastrar(this.user).subscribe((resp: User) => {
+      this.authService.cadastrar(this.user).subscribe((resp: Usuario) => {
         this.user = resp
         this.router.navigate(['/login'])
         alert('Usuário cadastrado com sucesso!')
