@@ -1,6 +1,8 @@
+import { AlertasService } from './../service/alertas.service';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Tema } from '../model/Tema';
 import { TemaService } from '../service/tema.service';
+import { Tema } from '../model/Tema';
 
 @Component({
   selector: 'app-post-tema',
@@ -9,21 +11,27 @@ import { TemaService } from '../service/tema.service';
 })
 export class PostTemaComponent implements OnInit {
 
-  listaTemas: Tema = new Tema ()
-  listatemas: Tema[]
+  tema: Tema = new Tema()
+  listaTemas: Tema[]
+  modificacao: boolean = false
+
 
   constructor(
-    private temaService: TemaService
+    private temaService: TemaService,
+    private router: Router,
+    private alerta: AlertasService
   ) { }
 
   ngOnInit() {
+
     this.findAllTemas()
+  
   }
 
   findAllTemas() {
     this.temaService.getAllTemas().subscribe((resp: Tema[]) => {
       this.listaTemas = resp
-      
+      console.log(this.listaTemas)
     })
   }
 
@@ -33,17 +41,15 @@ export class PostTemaComponent implements OnInit {
    })
  }
 
-
-
  cadastrar(){
-  if (this.tema.descricao == null) {
-   alert('Preencha o campo de nome do tema corretamente')
-  } else {
-   this.temaService.postTema(this.tema).subscribe((resp: Tema) => {
-     this.tema = resp
-     this.router.navigate(['/feed'])
-     alert('Tema cadastrado com sucesso!')
-   })
-  }
-}
+   if (this.tema.descricao == null) {
+    alert('Preencha o campo de nome do tema corretamente')
+   } else {
+    this.temaService.postTema(this.tema).subscribe((resp: Tema) => {
+      this.tema = resp
+      this.router.navigate(['/feed'])
+      alert('Tema cadastrado com sucesso!')
+    })
+   }
+ }
 }

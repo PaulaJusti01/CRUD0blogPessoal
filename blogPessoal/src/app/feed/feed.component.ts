@@ -35,7 +35,7 @@ export class FeedComponent implements OnInit {
 
   ngOnInit(){
 
-    let token = environment.token
+    let token = localStorage.getItem('token')
 
     if(token == '') {
       this.router.navigate(['/login'])
