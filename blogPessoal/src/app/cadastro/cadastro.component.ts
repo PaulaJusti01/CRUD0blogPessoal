@@ -33,10 +33,10 @@ export class CadastroComponent implements OnInit {
       this.authService.cadastrar(this.user).subscribe((resp: Usuario) => {
         this.user = resp
         this.router.navigate(['/login'])
-        alert('Usuário cadastrado com sucesso!')
+        this.alerta.showAlertSuccess('Usuário cadastrado com sucesso!')
     })
     }else{
-      alert('Sua senhas não conferem ')
+      this.alerta.showAlertDanger('Sua senhas não conferem ')
     }
     
   }
