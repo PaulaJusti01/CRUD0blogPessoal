@@ -1,0 +1,14 @@
+.texto{
+    letter-spacing: .2rem;
+    font-size: 16pt;
+    color: #ff0000 !important;
+}
+
+.texto:hover{
+    color: #00ff00 !important;
+}
+
+a{
+    cursor: pointer;
+}
+
